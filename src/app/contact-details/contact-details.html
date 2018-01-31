@@ -1,0 +1,47 @@
+<mat-toolbar color="primary">
+	<mat-toolbar-row style="justify-content: center">
+					<span>Pothole Reporter</span>
+	</mat-toolbar-row>
+</mat-toolbar>
+
+<div class="mat-app-background basic-container contact-background">
+<mat-card class="contact-card">
+	<mat-card-header>
+		<mat-card-title>Thank you!</mat-card-title>
+	</mat-card-header>
+	<mat-card-content>
+		<p>We are compiling a list of potholes which we will then be using to put pressure on Hampshire County Council to fix. The conservative-run council has been slashing maintenance budgets which have led to this mess and we hope to turn it around</p>
+	</mat-card-content>
+</mat-card>
+<br>
+<mat-card>
+	<mat-card-header>
+		<mat-card-title>Vote Liberal Democrat!</mat-card-title>
+	</mat-card-header>
+	<mat-card-content>
+		<p>The only way to ensure that the council starts taking road maintenance seriously again is to ensure councillors support investment. The Liberal Democrats see maintenance in infrastructure to be an essential part of council responsibilities and every councillor will fight for investment in our roads (as well as our schools, healthcare, railways..)</p>
+	</mat-card-content>
+</mat-card>
+<br>
+<mat-card class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>Please provide some contact details</mat-card-title>
+		<mat-card-subtitle>So we can keep you updated with the campaign</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-form-field>
+      <input matInput placeholder="Name">
+    </mat-form-field>
+    <mat-form-field>
+      <textarea matInput placeholder="Email"></textarea>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea matInput placeholder="Phone"></textarea>
+    </mat-form-field>
+	</mat-card-content>
+  <mat-card-actions>
+					<button mat-button (click)="onClickSend()">Send</button>
+  </mat-card-actions>
+</mat-card>
+</div>

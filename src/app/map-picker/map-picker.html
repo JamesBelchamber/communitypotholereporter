@@ -1,0 +1,28 @@
+<mat-toolbar color="primary" style="position: fixed;z-index: 99">
+	<mat-toolbar-row style="justify-content: center">
+					<span>Pothole Reporter</span>
+	</mat-toolbar-row>
+</mat-toolbar>
+<agm-map
+	[latitude]="lat"
+	[longitude]="lng"
+	[zoom]="zoom"
+	[clickableIcons]="false"
+	[disableDefaultUI]="false"
+	[zoomControl] = "false"
+	[streetViewControl]="false"
+  (mapClick)="mapClicked($event)">
+
+  <agm-marker
+      [latitude]="marker.lat"
+      [longitude]="marker.lng"
+      [markerDraggable]="true"
+      (dragEnd)="markerDragEnd($event)">
+  </agm-marker>
+</agm-map>
+
+<div *ngIf="firstClick;else help">
+				<button (click)="onClickNext()" mat-fab color="primary" style="bottom: 45px; right: 24px; position: fixed"><mat-icon>navigate_next</mat-icon></button>
+</div>
+
+<ng-template #help><button (click)="onClickHelp()" mat-fab color="accent" style="bottom: 45px; right: 24px;position: fixed"><mat-icon>help_outline</mat-icon></button></ng-template>
