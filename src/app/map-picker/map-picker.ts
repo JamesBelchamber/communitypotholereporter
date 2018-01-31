@@ -18,13 +18,13 @@ export class MapPickerComponent {
 	marker: marker = {};
   firstClick: boolean = false;
 
-  mapClicked($event: MouseEvent) {
+  mapClicked($event: any) {
     this.marker.lat = $event.coords.lat,
 		this.marker.lng = $event.coords.lng,
     this.firstClick = true
   };
 
-  markerDragEnd($event: MouseEvent) {
+  markerDragEnd($event: any) {
     this.marker.lat = $event.coords.lat,
     this.marker.lng = $event.coords.lng
 	};
@@ -83,6 +83,6 @@ export class MapPickerHelpDialog {
 
 // just an interface for type safety.
 interface marker {
-	lat: number;
-	lng: number;
+	lat?: number;
+	lng?: number;
 }
