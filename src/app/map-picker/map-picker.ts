@@ -1,7 +1,7 @@
 import { Component, Inject }      from '@angular/core';
 import { Router }         from '@angular/router';
 import { MatDialog,
-			 	 MatDialogRef,
+          MatDialogRef,
          MAT_DIALOG_DATA } from '@angular/material';
 import { HttpClient,
          HttpHeaders }    from '@angular/common/http';
@@ -14,35 +14,35 @@ import { HttpClient,
 export class MapPickerComponent {
   zoom: number = 12
   lat: number = 51.266540
-	lng: number = -1.092396
-	marker: marker = {};
+  lng: number = -1.092396
+  marker: marker = {};
   firstClick: boolean = false;
 
   mapClicked($event: any) {
     this.marker.lat = $event.coords.lat,
-		this.marker.lng = $event.coords.lng,
+    this.marker.lng = $event.coords.lng,
     this.firstClick = true
   };
 
   markerDragEnd($event: any) {
     this.marker.lat = $event.coords.lat,
     this.marker.lng = $event.coords.lng
-	};
+  };
 
   constructor(public dialog: MatDialog) {}
 
-	onClickNext(): void {
-	  let dialogRef = this.dialog.open(MapPickerConfirmDialog, {
-			width: '250px',
-			data: JSON.stringify(this.marker)
-		});
-	}
+  onClickNext(): void {
+    let dialogRef = this.dialog.open(MapPickerConfirmDialog, {
+      width: '250px',
+      data: JSON.stringify(this.marker)
+    });
+  }
 
-	onClickHelp(): void {
+  onClickHelp(): void {
     let dialogRef = this.dialog.open(MapPickerHelpDialog, {
       width: '250px'
     });
-	}
+  }
 }
 
 @Component({
@@ -52,19 +52,19 @@ export class MapPickerComponent {
 export class MapPickerConfirmDialog {
 
 constructor(public dialogRef: MatDialogRef<MapPickerConfirmDialog>,
-	    				private http: HttpClient,
-							private router: Router,
-				      @Inject(MAT_DIALOG_DATA) public data: string) {}
+              private http: HttpClient,
+              private router: Router,
+              @Inject(MAT_DIALOG_DATA) public data: string) {}
 
   onBack(): void {
     this.dialogRef.close();
-	}
+  }
 
-	onSubmit(): void {
-		this.http.post('https://ivwejxpei0.execute-api.eu-west-2.amazonaws.com/Production/coordinates', JSON.stringify(this.data), {headers: new HttpHeaders().set('Content-Type', 'application/json')}).subscribe();
-		this.router.navigate(['/provide-contact-details']);
+  onSubmit(): void {
+    this.http.post('https://ivwejxpei0.execute-api.eu-west-2.amazonaws.com/Production/coordinates', this.data, {headers: new HttpHeaders().set('Content-Type', 'application/json')}).subscribe();
+    this.router.navigate(['/provide-contact-details']);
     this.dialogRef.close();
-	}
+  }
 }
 
 
@@ -73,16 +73,16 @@ constructor(public dialogRef: MatDialogRef<MapPickerConfirmDialog>,
   templateUrl: 'map-picker-help-dialog.html',
 })
 export class MapPickerHelpDialog {
-			
-	constructor(public dialogRef: MatDialogRef<MapPickerHelpDialog>) {}
-			
-	onOkClick(): void {
+      
+  constructor(public dialogRef: MatDialogRef<MapPickerHelpDialog>) {}
+      
+  onOkClick(): void {
     this.dialogRef.close();
   }
 }
 
 // just an interface for type safety.
 interface marker {
-	lat?: number;
-	lng?: number;
+  lat?: number;
+  lng?: number;
 }

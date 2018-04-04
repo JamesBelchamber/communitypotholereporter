@@ -10,16 +10,16 @@ import { MatDialog,
 })
 export class ContactDetailsComponent {
 
-	constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog) {}
 
-	onClickNext(): void {
-	}
+  onClickSend(): void {
+  }
 
-	onClickHelp(): void {
+  onClickHelp(): void {
     let dialogRef = this.dialog.open(ContactDetailsHelpDialog, {
       width: '250px'
     });
-	}
+  }
 }
 
 @Component({
@@ -27,10 +27,10 @@ export class ContactDetailsComponent {
   templateUrl: 'contact-details-help-dialog.html',
 })
 export class ContactDetailsHelpDialog {
-			
-	constructor(public dialogRef: MatDialogRef<ContactDetailsHelpDialog>) {}
-			
-	onOkClick(): void {
+      
+  constructor(public dialogRef: MatDialogRef<ContactDetailsHelpDialog>) {}
+      
+  onOkClick(): void {
     this.dialogRef.close();
   }
 }
