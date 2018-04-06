@@ -1,6 +1,6 @@
 import { BrowserModule }            from '@angular/platform-browser';
 import { NgModule }                 from '@angular/core';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule }  from '@angular/platform-browser/animations';
 import { MatToolbarModule,
 			   MatButtonModule,
@@ -17,8 +17,7 @@ import { MapPickerComponent,
 				 MapPickerConfirmDialog,
 				 MapPickerHelpDialog,
 				 MapPickerSizeDialog }      from './map-picker/map-picker';
-import { ContactDetailsComponent,
-         ContactDetailsHelpDialog } from './contact-details/contact-details';
+import { ContactDetailsComponent } from './contact-details/contact-details';
 import { AppRoutingModule }         from './app-routing.module';
 
 @NgModule({
@@ -28,10 +27,10 @@ import { AppRoutingModule }         from './app-routing.module';
 		MapPickerHelpDialog,
 		MapPickerSizeDialog,
 		MapPickerConfirmDialog,
-		ContactDetailsComponent,
-    ContactDetailsHelpDialog
+		ContactDetailsComponent
   ],
-	imports: [
+  imports: [
+                FormsModule,
     BrowserModule,
     BrowserAnimationsModule,
 		MatToolbarModule,
@@ -51,8 +50,7 @@ import { AppRoutingModule }         from './app-routing.module';
 	entryComponents: [
 		MapPickerHelpDialog,
 		MapPickerSizeDialog,
-		MapPickerConfirmDialog,
-		ContactDetailsHelpDialog
+		MapPickerConfirmDialog
 	],
   bootstrap: [AppComponent]
 })

@@ -1,7 +1,7 @@
-import { Component }    from '@angular/core';
+import { Component, Input }    from '@angular/core';
 import { Router }       from '@angular/router';
-import { MatDialog,
-         MatDialogRef } from '@angular/material';
+import { HttpClient,
+         HttpHeaders }  from '@angular/common/http';
 
 @Component({
   selector: 'contact-details',
@@ -9,28 +9,19 @@ import { MatDialog,
   styleUrls: ['./contact-details.css']
 })
 export class ContactDetailsComponent {
+  @Input() contact: contact = {};
+  submitted: boolean = false;
 
-  constructor(public dialog: MatDialog) {}
+  constructor(private http: HttpClient) {}
 
   onClickSend(): void {
-  }
-
-  onClickHelp(): void {
-    let dialogRef = this.dialog.open(ContactDetailsHelpDialog, {
-      width: '250px'
-    });
+    this.http.post('https://ivwejxpei0.execute-api.eu-west-2.amazonaws.com/Production/userdetails', JSON.stringify(this.contact), {headers: new HttpHeaders().set('Content-Type', 'application/json')}).subscribe();
+    this.submitted = true;
   }
 }
 
-@Component({
-  selector: 'contact-details-help-dialog',
-  templateUrl: 'contact-details-help-dialog.html',
-})
-export class ContactDetailsHelpDialog {
-      
-  constructor(public dialogRef: MatDialogRef<ContactDetailsHelpDialog>) {}
-      
-  onOkClick(): void {
-    this.dialogRef.close();
-  }
+interface contact {
+  name?: string;
+  email?: string;
+  phone?: string;
 }

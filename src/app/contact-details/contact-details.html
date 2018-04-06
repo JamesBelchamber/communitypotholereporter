@@ -10,38 +10,52 @@
 		<mat-card-title>Thank you!</mat-card-title>
 	</mat-card-header>
 	<mat-card-content>
-		<p>We are compiling a list of potholes which we will then be using to put pressure on Hampshire County Council to fix. The conservative-run council has been slashing maintenance budgets which have led to this mess and we hope to turn it around</p>
+		<p>We are compiling a list of potholes which we will then be using to put pressure on Hampshire County Council to fix. The Conservative-run council has been slashing maintenance budgets which have led to this mess and we hope to turn it around</p>
 	</mat-card-content>
 </mat-card>
 <br>
 <mat-card>
 	<mat-card-header>
-		<mat-card-title>Vote Liberal Democrat!</mat-card-title>
+		<mat-card-title>Want to know more?</mat-card-title>
 	</mat-card-header>
 	<mat-card-content>
-		<p>The only way to ensure that the council starts taking road maintenance seriously again is to ensure councillors support investment. The Liberal Democrats see maintenance in infrastructure to be an essential part of council responsibilities and every councillor will fight for investment in our roads (as well as our schools, healthcare, railways..)</p>
+		<p>Find out about the Basingstoke and Deane Liberal Democrats, and how we're making a difference across the Borough, on our website and Facebook page:
+		<a href="https://www.facebook.com/basingstokelibdems"><button mat-button>Facebook</button></a>
+		<a href="https://basingstokelibdems.org.uk"><button mat-button>Website</button></a>
 	</mat-card-content>
 </mat-card>
 <br>
+<div *ngIf="submitted; else form">
 <mat-card class="example-card">
   <mat-card-header>
-    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>Please provide some contact details</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <p>Thank you! We will keep you informed!</p>
+  </mat-card-content>
+</mat-card>
+</div>
+
+<ng-template #form>
+<mat-card class="example-card">
+  <mat-card-header>
     <mat-card-title>Please provide some contact details</mat-card-title>
 		<mat-card-subtitle>So we can keep you updated with the campaign</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
     <mat-form-field>
-      <input matInput placeholder="Name">
+      <textarea matInput placeholder="Name" [(ngModel)]="contact.name"></textarea>
     </mat-form-field>
     <mat-form-field>
-      <textarea matInput placeholder="Email"></textarea>
+      <textarea matInput placeholder="Email" [(ngModel)]="contact.email"></textarea>
     </mat-form-field>
     <mat-form-field>
-      <textarea matInput placeholder="Phone"></textarea>
+	    <textarea matInput placeholder="Phone" [(ngModel)]="contact.phone"></textarea>
     </mat-form-field>
 	</mat-card-content>
   <mat-card-actions>
 					<button mat-button (click)="onClickSend()">Send</button>
   </mat-card-actions>
 </mat-card>
+</ng-template>
 </div>
