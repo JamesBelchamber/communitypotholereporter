@@ -1,0 +1,9 @@
+<h1 mat-dialog-title>Confirm</h1>
+<div mat-dialog-content>
+  <p>Is the pothole over x wide and/or y deep?</p>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="onBigHole()">Yes</button>
+  <button mat-button (click)="onSmallHole()" cdkFocusInitial>No</button>
+</div>

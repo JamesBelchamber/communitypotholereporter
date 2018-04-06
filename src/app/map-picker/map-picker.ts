@@ -32,9 +32,9 @@ export class MapPickerComponent {
   constructor(public dialog: MatDialog) {}
 
   onClickNext(): void {
-    let dialogRef = this.dialog.open(MapPickerConfirmDialog, {
+    let dialogRef = this.dialog.open(MapPickerSizeDialog, {
       width: '250px',
-      data: JSON.stringify(this.marker)
+      data: this.marker
     });
   }
 
@@ -54,19 +54,47 @@ export class MapPickerConfirmDialog {
 constructor(public dialogRef: MatDialogRef<MapPickerConfirmDialog>,
               private http: HttpClient,
               private router: Router,
-              @Inject(MAT_DIALOG_DATA) public data: string) {}
+              @Inject(MAT_DIALOG_DATA) public data: marker) {}
 
   onBack(): void {
     this.dialogRef.close();
   }
 
   onSubmit(): void {
-    this.http.post('https://ivwejxpei0.execute-api.eu-west-2.amazonaws.com/Production/coordinates', this.data, {headers: new HttpHeaders().set('Content-Type', 'application/json')}).subscribe();
+    this.http.post('https://ivwejxpei0.execute-api.eu-west-2.amazonaws.com/Production/coordinates', JSON.stringify(this.data), {headers: new HttpHeaders().set('Content-Type', 'application/json')}).subscribe();
     this.router.navigate(['/provide-contact-details']);
     this.dialogRef.close();
   }
 }
 
+@Component({
+  selector: 'map-picker-size-dialog',
+  templateUrl: 'map-picker-size-dialog.html',
+})
+export class MapPickerSizeDialog {
+      
+constructor(public dialogRef: MatDialogRef<MapPickerSizeDialog>,
+	      private dialog: MatDialog,
+	      @Inject(MAT_DIALOG_DATA) public data: marker) {}
+
+  onSmallHole(): void {
+    this.data.size = "small";
+    let dialogRef = this.dialog.open(MapPickerConfirmDialog, {
+      width: '250px',
+      data: this.data
+    });
+    this.dialogRef.close();
+  }
+
+  onBigHole(): void {
+    this.data.size = "large";
+    let dialogRef = this.dialog.open(MapPickerConfirmDialog, {
+      width: '250px',
+      data: this.data
+    });
+    this.dialogRef.close();
+  }
+}
 
 @Component({
   selector: 'map-picker-help-dialog',
@@ -85,4 +113,5 @@ export class MapPickerHelpDialog {
 interface marker {
   lat?: number;
   lng?: number;
+  size?: string;
 }

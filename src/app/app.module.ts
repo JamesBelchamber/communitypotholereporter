@@ -15,7 +15,8 @@ import { HttpClientModule }         from '@angular/common/http';
 import { AppComponent }             from './app.component';
 import { MapPickerComponent,
 				 MapPickerConfirmDialog,
-         MapPickerHelpDialog }      from './map-picker/map-picker';
+				 MapPickerHelpDialog,
+				 MapPickerSizeDialog }      from './map-picker/map-picker';
 import { ContactDetailsComponent,
          ContactDetailsHelpDialog } from './contact-details/contact-details';
 import { AppRoutingModule }         from './app-routing.module';
@@ -25,6 +26,7 @@ import { AppRoutingModule }         from './app-routing.module';
 		AppComponent,
 		MapPickerComponent,
 		MapPickerHelpDialog,
+		MapPickerSizeDialog,
 		MapPickerConfirmDialog,
 		ContactDetailsComponent,
     ContactDetailsHelpDialog
@@ -48,6 +50,7 @@ import { AppRoutingModule }         from './app-routing.module';
 	providers: [],
 	entryComponents: [
 		MapPickerHelpDialog,
+		MapPickerSizeDialog,
 		MapPickerConfirmDialog,
 		ContactDetailsHelpDialog
 	],
