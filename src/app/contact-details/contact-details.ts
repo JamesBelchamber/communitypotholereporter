@@ -12,11 +12,15 @@ export class ContactDetailsComponent {
   @Input() contact: contact = {};
   submitted: boolean = false;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   onClickSend(): void {
     this.http.post('https://ivwejxpei0.execute-api.eu-west-2.amazonaws.com/Production/userdetails', JSON.stringify(this.contact), {headers: new HttpHeaders().set('Content-Type', 'application/json')}).subscribe();
     this.submitted = true;
+  }
+
+  onClickBack(): void {
+    this.router.navigate(['/place-a-pin']);
   }
 }
 
